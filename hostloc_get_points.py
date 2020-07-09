@@ -37,7 +37,9 @@ def check_login_status(s: req_Session, number_c: int) -> bool:
     test_url = "https://www.hostloc.com/home.php?mod=spacecp"
     res = s.get(test_url)
     res.encoding = "utf-8"
+    print(res.text)
     test_title = re.findall("<title>.*?</title>", res.text)
+    print(test_title[0])
     if test_title[0] != "<title>个人资料 -  全球主机交流论坛 -  Powered by Discuz!</title>":
         print("第", number_c, "个帐户登录失败！")
         return False
